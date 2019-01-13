@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div class="container">
+      <div id="calculator">
+        <div id="display">0</div>
+        <div id="keypad">
+          <button data-action="clear">CE</button>
+          <button data-action="reset">C</button>
+          <button data-action="backspace">⌫</button>
+          <button class="operator" data-action="divide">÷</button>
+          <button>7</button> <button>8</button> <button>9</button>
+          <button class="operator" data-action="multiply">x</button>
+          <button>4</button> <button>5</button> <button>6</button>
+          <button class="operator" data-action="subtract">-</button>
+          <button>1</button> <button>2</button> <button>3</button>
+          <button class="operator" data-action="add">+</button>
+          <button></button> <button>0</button>
+          <button class="decimal" data-action="decimal">.</button>
+          <button class="equals" data-action="calculate">=</button>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
