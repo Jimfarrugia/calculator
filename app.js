@@ -1,3 +1,9 @@
+/*
+  Notes:
+
+  - User can add more than one decimal point/period
+*/
+
 const calculator = document.querySelector("#calculator");
 const keys = calculator.querySelector("#keypad");
 const display = document.querySelector("#display");
@@ -14,17 +20,20 @@ keys.addEventListener("click", e => {
     // NUMBER PRESSED
     /* 
       If button pressed does not have an action assigned,
-      it must be a number key
+      then it must be a number key.
+      If the current display is '0', replace it with the new number.
+      Else append the current display with the new number.
     */
     if (!action) {
-      //console.log("number!");
       if (displayedNum === "0") {
-        // If '0' is displayed, replace with number that was pressed
         display.textContent = keyContent;
       } else {
-        // Else, append the displayed number
         display.textContent += keyContent;
       }
+    }
+    // If button pressed is decimal
+    if (action === "decimal") {
+      display.textContent += ".";
     }
     // If button pressed is an operator
     if (
@@ -34,10 +43,6 @@ keys.addEventListener("click", e => {
       action === "divide"
     ) {
       console.log("operator!");
-    }
-    // If button pressed is decimal
-    if (action === "decimal") {
-      console.log("decimal!");
     }
     // If button pressed is clear (CE)
     if (action === "clear") {
