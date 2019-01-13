@@ -1,9 +1,3 @@
-/*
-  Notes:
-
-  - User can add more than one decimal point/period
-*/
-
 const calculator = document.querySelector("#calculator");
 const keys = calculator.querySelector("#keypad");
 const display = document.querySelector("#display");
@@ -40,9 +34,14 @@ keys.addEventListener("click", e => {
         display.textContent += keyContent;
       }
     }
-    // If button pressed is decimal
-    if (action === "decimal") {
-      display.textContent += ".";
+    // If button pressed is decimal AND there is no decimal point already
+    if (action === "decimal" && !displayedNum.includes(".")) {
+      if (previousKeyType === "operator") {
+        display.textContent = "0.";
+      } else {
+        display.textContent += ".";
+      }
+      calculator.dataset.previousKeyType = "decimal";
     }
     // If button pressed is an operator
     if (
@@ -60,14 +59,17 @@ keys.addEventListener("click", e => {
     // If button pressed is clear (CE)
     if (action === "clear") {
       console.log("clear!");
+      calculator.dataset.previousKeyType = "clear";
     }
     // If button pressed is reset (C)
     if (action === "reset") {
       console.log("reset!");
+      calculator.dataset.previousKeyType = "reset";
     }
     // If button pressed is backspace
     if (action === "backspace") {
       console.log("backspace!");
+      calculator.dataset.previousKeyType = "backspace";
     }
     // If button pressed is calculate
     if (action === "calculate") {
@@ -76,6 +78,8 @@ keys.addEventListener("click", e => {
       const secondValue = displayedNum;
 
       display.textContent = calculate(firstValue, operator, secondValue);
+
+      calculator.dataset.previousKeyType = "decimal";
     }
   }
 });
