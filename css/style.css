@@ -5,6 +5,7 @@ body {
   padding: 10px;
   background: #aaa;
   display: inline-block;
+  border-radius: 2%;
 }
 #display {
   box-sizing: border-box;
@@ -15,6 +16,7 @@ body {
   margin-bottom: 10px;
   padding: 5px 20px;
   overflow: hidden;
+  border-radius: 2%;
 }
 #keypad {
   display: grid;
@@ -22,7 +24,7 @@ body {
   grid-gap: 5px;
 }
 #keypad button {
-  padding: 20px 0;
+  padding: 15px 0;
   font-size: 1.2rem;
 }
 .is-depressed {

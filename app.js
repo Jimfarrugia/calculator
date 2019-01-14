@@ -27,19 +27,26 @@ keys.addEventListener("click", e => {
       Else append the current display with the new number.
     */
     if (!action) {
-      if (displayedNum === "0" || previousKeyType === "operator") {
+      if (
+        displayedNum === "0" ||
+        previousKeyType === "operator" ||
+        previousKeyType === "calculate"
+      ) {
         display.textContent = keyContent;
-        calculator.dataset.previousKeyType = "none";
       } else {
-        display.textContent += keyContent;
+        display.textContent = displayedNum + keyContent;
       }
+      calculator.dataset.previousKeyType = "number";
     }
     // If button pressed is decimal AND there is no decimal point already
-    if (action === "decimal" && !displayedNum.includes(".")) {
-      if (previousKeyType === "operator") {
+    if (action === "decimal") {
+      if (!displayedNum.includes(".")) {
+        display.textContent = displayedNum + ".";
+      } else if (
+        previousKeyType === "operator" ||
+        previousKeyType === "calculate"
+      ) {
         display.textContent = "0.";
-      } else {
-        display.textContent += ".";
       }
       calculator.dataset.previousKeyType = "decimal";
     }
@@ -55,13 +62,17 @@ keys.addEventListener("click", e => {
       const secondValue = displayedNum;
 
       if (firstValue && operator && previousKeyType !== "operator") {
-        display.textContent = calculate(firstValue, operator, secondValue);
+        const calcValue = calculate(firstValue, operator, secondValue);
+        display.textContent = calcValue;
+        // calcValue is new firstValue
+        calculator.dataset.firstValue = calcValue;
+      } else {
+        calculator.dataset.firstValue = displayedNum;
       }
 
       key.classList.add("is-depressed");
       // Add custom attributes
       calculator.dataset.previousKeyType = "operator";
-      calculator.dataset.firstValue = displayedNum;
       calculator.dataset.operator = action;
     }
     // If button pressed is clear (CE)
@@ -81,13 +92,21 @@ keys.addEventListener("click", e => {
     }
     // If button pressed is calculate
     if (action === "calculate") {
-      const firstValue = calculator.dataset.firstValue;
+      let firstValue = calculator.dataset.firstValue;
       const operator = calculator.dataset.operator;
-      const secondValue = displayedNum;
+      let secondValue = displayedNum;
 
+      if (firstValue) {
+        if (previousKeyType === "calculate") {
+          firstValue = displayedNum;
+          secondValue = calculator.dataset.modValue;
+        }
+        display.textContent = calculate(firstValue, operator, secondValue);
+      }
+
+      // set modValue attribute
+      calculator.dataset.modValue = secondValue;
       calculator.dataset.previousKeyType = "calculate";
-
-      display.textContent = calculate(firstValue, operator, secondValue);
     }
   }
 });
