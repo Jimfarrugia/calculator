@@ -2,7 +2,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 #calculator {
-  padding: 10px;
+  padding: 20px;
   background: #aaa;
   display: inline-block;
   border-radius: 2%;
@@ -10,22 +10,21 @@ body {
 #display {
   box-sizing: border-box;
   background: #eee;
-  font-size: 3rem;
+  font-size: 4rem;
   text-align: right;
-  width: 255px;
-  margin-bottom: 10px;
-  padding: 5px 20px;
-  overflow: hidden;
+  max-width: 335px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
   border-radius: 2%;
 }
 #keypad {
   display: grid;
-  grid-template-columns: 60px 60px 60px 60px;
+  grid-template-columns: 80px 80px 80px 80px;
   grid-gap: 5px;
 }
 #keypad button {
-  padding: 15px 0;
-  font-size: 1.2rem;
+  padding: 20px 0;
+  font-size: 1.5rem;
 }
 .is-depressed {
   background: #bbb;

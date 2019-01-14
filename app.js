@@ -1,6 +1,6 @@
 const calculator = document.querySelector("#calculator");
 const keys = calculator.querySelector("#keypad");
-const display = document.querySelector("#display");
+const display = document.getElementById("display");
 
 // Listen for click
 keys.addEventListener("click", e => {
@@ -13,6 +13,20 @@ keys.addEventListener("click", e => {
     const displayedNum = display.textContent;
     // Get previous key
     const previousKeyType = calculator.dataset.previousKeyType;
+
+    // Check/adjust display font size
+    if (displayedNum.length > 25) {
+      display.textContent = backspace(displayedNum);
+      return alert("Sorry! Maximum 25 digits.");
+    } else if (displayedNum.length >= 16) {
+      display.style.fontSize = "1.2rem";
+      display.style.padding = "30px";
+    } else if (displayedNum.length >= 7) {
+      display.style.fontSize = "2rem";
+      display.style.padding = "20px";
+    } else {
+      display.style.fontSize = "4rem";
+    }
 
     // Remove .is-depressed from all keys
     Array.from(key.parentNode.children).forEach(k =>
@@ -99,7 +113,7 @@ keys.addEventListener("click", e => {
     }
     // If button pressed is backspace
     if (action === "backspace") {
-      console.log("backspace!");
+      display.textContent = backspace(displayedNum);
       calculator.dataset.previousKeyType = "backspace";
     }
     // If button pressed is calculate
@@ -124,7 +138,7 @@ keys.addEventListener("click", e => {
 });
 
 /*
-  Calculate
+  FUNCTION - Calculate
 */
 const calculate = (n1, operator, n2) => {
   const firstNum = parseFloat(n1);
@@ -134,3 +148,21 @@ const calculate = (n1, operator, n2) => {
   if (operator === "multiply") return firstNum * secondNum;
   if (operator === "divide") return firstNum / secondNum;
 };
+/*
+  FUNCTION - Backspace
+*/
+const backspace = input => {
+  if (input != "0") {
+    if (input.length < 2) {
+      return "0";
+    } else {
+      return input.substring(0, input.length - 1);
+    }
+  } else {
+    return input;
+  }
+};
+/*
+  FUNCTION - Adjust font
+*/
+const adjustFont = () => {};
