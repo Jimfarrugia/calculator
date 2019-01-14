@@ -48,8 +48,8 @@ a:hover {
 #keypad button:hover {
   background: #7b1fa2;
 }
-.is-depressed {
-  background: #bbb;
+#keypad .is-depressed {
+  background: #7b1fa2;
 }
 #footer {
   text-align: center;
