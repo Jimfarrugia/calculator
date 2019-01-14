@@ -19,6 +19,11 @@ keys.addEventListener("click", e => {
       k.classList.remove("is-depressed")
     );
 
+    // If logo is clicked, navigate to portfolio
+    if (action === "portfolio") {
+      window.location.href = "http://jimfarrugia.com";
+    }
+
     // NUMBER PRESSED
     /* 
       If button pressed does not have an action assigned,
