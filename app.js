@@ -14,20 +14,6 @@ keys.addEventListener("click", e => {
     // Get previous key
     const previousKeyType = calculator.dataset.previousKeyType;
 
-    // Check/adjust display font size
-    if (displayedNum.length > 25) {
-      display.textContent = backspace(displayedNum);
-      return alert("Sorry! Maximum 25 digits.");
-    } else if (displayedNum.length >= 16) {
-      display.style.fontSize = "1.2rem";
-      display.style.padding = "30px";
-    } else if (displayedNum.length >= 7) {
-      display.style.fontSize = "2rem";
-      display.style.padding = "20px";
-    } else {
-      display.style.fontSize = "4rem";
-    }
-
     // Remove .is-depressed from all keys
     Array.from(key.parentNode.children).forEach(k =>
       k.classList.remove("is-depressed")
@@ -101,6 +87,7 @@ keys.addEventListener("click", e => {
     // If button pressed is clear (CE)
     if (action === "clear") {
       display.textContent = 0;
+      display.style.fontSize = "4rem";
       calculator.dataset.previousKeyType = "clear";
     }
     // If button pressed is reset (C)
@@ -110,6 +97,7 @@ keys.addEventListener("click", e => {
       calculator.dataset.operator = "";
       calculator.dataset.previousKeyType = "";
       display.textContent = 0;
+      display.style.fontSize = "4rem";
     }
     // If button pressed is backspace
     if (action === "backspace") {
@@ -133,6 +121,24 @@ keys.addEventListener("click", e => {
       // set modValue attribute
       calculator.dataset.modValue = secondValue;
       calculator.dataset.previousKeyType = "calculate";
+    }
+
+    // Check/adjust display font size
+    if (display.textContent.length > 24) {
+      display.textContent = backspace(display.textContent);
+      return alert("Sorry! Maximum 24 digits.");
+    } else if (display.textContent.length > 13) {
+      display.style.fontSize = "1.4rem";
+      display.style.padding = "34px 20px";
+    } else if (display.textContent.length > 10) {
+      display.style.fontSize = "2.25rem";
+      display.style.padding = "27px 20px";
+    } else if (display.textContent.length > 7) {
+      display.style.fontSize = "3rem";
+      display.style.padding = "20px";
+    } else {
+      display.style.fontSize = "4rem";
+      display.style.padding = "10px 20px";
     }
   }
 });
@@ -162,7 +168,3 @@ const backspace = input => {
     return input;
   }
 };
-/*
-  FUNCTION - Adjust font
-*/
-const adjustFont = () => {};
