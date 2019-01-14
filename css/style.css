@@ -1,32 +1,35 @@
 body {
-  font-family: Arial, Helvetica, sans-serif;
   padding: 10px;
+  background: #e1bee7;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
 }
 a {
   text-decoration: none;
 }
 a:link,
 a:visited {
-  color: #0069c0;
+  color: #ddd;
 }
 a:active,
 a:hover {
-  color: hsl(207, 90%, 45%);
+  color: #fff;
 }
 #calculator {
-  padding: 20px 20px 0 20px;
-  background: #aaa;
-  display: inline-block;
-  border-radius: 2%;
+  width: 335px;
+  margin: 0 auto;
+  padding: 20px 20px 1px 20px;
+  background: #4a148c;
+  border-radius: 1%;
 }
 #display {
   box-sizing: border-box;
-  background: #eee;
-  font-size: 4rem;
-  text-align: right;
   max-width: 335px;
   margin-bottom: 20px;
   padding: 10px 20px;
+  background: #12005e;
+  font-size: 4rem;
+  text-align: right;
   border-radius: 2%;
 }
 #keypad {
@@ -36,7 +39,14 @@ a:hover {
 }
 #keypad button {
   padding: 20px 0;
+  border: none;
+  background: #7c43bd;
+  color: #fff;
   font-size: 1.5rem;
+  border-radius: 5%;
+}
+#keypad button:hover {
+  background: #7b1fa2;
 }
 .is-depressed {
   background: #bbb;
