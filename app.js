@@ -66,10 +66,14 @@ keys.addEventListener("click", e => {
       const operator = calculator.dataset.operator;
       const secondValue = displayedNum;
 
-      if (firstValue && operator && previousKeyType !== "operator") {
+      if (
+        firstValue &&
+        operator &&
+        previousKeyType !== "operator" &&
+        previousKeyType !== "calculate"
+      ) {
         const calcValue = calculate(firstValue, operator, secondValue);
         display.textContent = calcValue;
-        // calcValue is new firstValue
         calculator.dataset.firstValue = calcValue;
       } else {
         calculator.dataset.firstValue = displayedNum;
@@ -82,13 +86,16 @@ keys.addEventListener("click", e => {
     }
     // If button pressed is clear (CE)
     if (action === "clear") {
-      console.log("clear!");
+      display.textContent = 0;
       calculator.dataset.previousKeyType = "clear";
     }
     // If button pressed is reset (C)
     if (action === "reset") {
-      console.log("reset!");
-      calculator.dataset.previousKeyType = "reset";
+      calculator.dataset.firstValue = "";
+      calculator.dataset.modValue = "";
+      calculator.dataset.operator = "";
+      calculator.dataset.previousKeyType = "";
+      display.textContent = 0;
     }
     // If button pressed is backspace
     if (action === "backspace") {
@@ -120,22 +127,10 @@ keys.addEventListener("click", e => {
   Calculate
 */
 const calculate = (n1, operator, n2) => {
-  let result = "";
-
-  switch (operator) {
-    case "add":
-      result = parseFloat(n1) + parseFloat(n2);
-      break;
-    case "subtract":
-      result = parseFloat(n1) - parseFloat(n2);
-      break;
-    case "multiply":
-      result = parseFloat(n1) * parseFloat(n2);
-      break;
-    case "divide":
-      result = parseFloat(n1) / parseFloat(n2);
-      break;
-  }
-
-  return result;
+  const firstNum = parseFloat(n1);
+  const secondNum = parseFloat(n2);
+  if (operator === "add") return firstNum + secondNum;
+  if (operator === "subtract") return firstNum - secondNum;
+  if (operator === "multiply") return firstNum * secondNum;
+  if (operator === "divide") return firstNum / secondNum;
 };
