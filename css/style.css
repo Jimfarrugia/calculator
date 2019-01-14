@@ -1,8 +1,20 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
+  padding: 10px;
+}
+a {
+  text-decoration: none;
+}
+a:link,
+a:visited {
+  color: #0069c0;
+}
+a:active,
+a:hover {
+  color: hsl(207, 90%, 45%);
 }
 #calculator {
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   background: #aaa;
   display: inline-block;
   border-radius: 2%;
@@ -28,4 +40,7 @@ body {
 }
 .is-depressed {
   background: #bbb;
+}
+#footer {
+  text-align: center;
 }

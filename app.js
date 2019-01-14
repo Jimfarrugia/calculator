@@ -19,11 +19,6 @@ keys.addEventListener("click", e => {
       k.classList.remove("is-depressed")
     );
 
-    // If logo is clicked, navigate to portfolio
-    if (action === "portfolio") {
-      window.location.href = "http://jimfarrugia.com";
-    }
-
     // NUMBER PRESSED
     /* 
       If button pressed does not have an action assigned,
@@ -54,6 +49,13 @@ keys.addEventListener("click", e => {
         display.textContent = "0.";
       }
       calculator.dataset.previousKeyType = "decimal";
+    }
+    // If button pressed is plus-minus
+    if (action === "plus-minus") {
+      if (displayedNum != 0) {
+        display.textContent = -displayedNum;
+      }
+      calculator.dataset.previousKeyType = "plus-minus";
     }
     // If button pressed is an operator
     if (
