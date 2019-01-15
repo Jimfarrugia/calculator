@@ -4,22 +4,28 @@ body {
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
 }
+abbr {
+  pointer-events: none;
+}
 a,
 abbr {
   text-decoration: none;
-  pointer-events: none;
 }
 a:link,
 a:visited {
-  color: #ddd;
+  color: #12005e;
 }
 a:active,
 a:hover {
-  color: #fff;
+  color: #4a148c;
+}
+h1 {
+  color: #12005e;
+  text-align: center;
 }
 #calculator {
   width: 335px;
-  margin: 0 auto;
+  margin: 30px auto;
   padding: 20px 20px 1px 20px;
   background: #4a148c;
   border-radius: 1%;
@@ -53,6 +59,10 @@ a:hover {
 #keypad .is-depressed {
   background: #7b1fa2;
 }
-#footer {
+p {
   text-align: center;
+}
+.help {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
 }
