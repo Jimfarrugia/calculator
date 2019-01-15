@@ -7,6 +7,7 @@ body {
 a,
 abbr {
   text-decoration: none;
+  pointer-events: none;
 }
 a:link,
 a:visited {
